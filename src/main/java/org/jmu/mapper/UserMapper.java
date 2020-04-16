@@ -1,7 +1,11 @@
 package org.jmu.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.jmu.entity.User;
+import org.springframework.stereotype.Repository;
 
+@Mapper
+@Repository
 public interface UserMapper {
     int deleteByPrimaryKey(Integer userId);
 
@@ -14,4 +18,7 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    //用户登录
+    public int userLogin(User user);
 }
