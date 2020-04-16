@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.jmu.mapper.RoadLocationMapper" >
+  <resultMap id="BaseResultMap" type="org.jmu.entity.RoadLocation" >
+    <id column="rl_id" property="rlId" jdbcType="INTEGER" />
+    <result column="rl_area" property="rlArea" jdbcType="VARCHAR" />
+    <result column="rl_street" property="rlStreet" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rl_id, rl_area, rl_street
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from roadlocation
+    where rl_id = #{rlId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from roadlocation
+    where rl_id = #{rlId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.jmu.entity.RoadLocation" >
+    insert into roadlocation (rl_id, rl_area, rl_street
+      )
+    values (#{rlId,jdbcType=INTEGER}, #{rlArea,jdbcType=VARCHAR}, #{rlStreet,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.jmu.entity.RoadLocation" >
+    insert into roadlocation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rlId != null" >
+        rl_id,
+      </if>
+      <if test="rlArea != null" >
+        rl_area,
+      </if>
+      <if test="rlStreet != null" >
+        rl_street,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rlId != null" >
+        #{rlId,jdbcType=INTEGER},
+      </if>
+      <if test="rlArea != null" >
+        #{rlArea,jdbcType=VARCHAR},
+      </if>
+      <if test="rlStreet != null" >
+        #{rlStreet,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.jmu.entity.RoadLocation" >
+    update roadlocation
+    <set >
+      <if test="rlArea != null" >
+        rl_area = #{rlArea,jdbcType=VARCHAR},
+      </if>
+      <if test="rlStreet != null" >
+        rl_street = #{rlStreet,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rl_id = #{rlId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.jmu.entity.RoadLocation" >
+    update roadlocation
+    set rl_area = #{rlArea,jdbcType=VARCHAR},
+      rl_street = #{rlStreet,jdbcType=VARCHAR}
+    where rl_id = #{rlId,jdbcType=INTEGER}
+  </update>
+</mapper>

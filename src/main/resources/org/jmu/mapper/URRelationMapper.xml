@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.jmu.mapper.URRelationMapper" >
+  <resultMap id="BaseResultMap" type="org.jmu.entity.URRelation" >
+    <id column="urr_id" property="urrId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="road_id" property="roadId" jdbcType="INTEGER" />
+    <result column="urr_info" property="urrInfo" jdbcType="VARCHAR" />
+    <result column="urr_firstpic" property="urrFirstpic" jdbcType="VARCHAR" />
+    <result column="urr_secondpic" property="urrSecondpic" jdbcType="VARCHAR" />
+    <result column="urr_thirdpic" property="urrThirdpic" jdbcType="VARCHAR" />
+    <result column="urr_time" property="urrTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    urr_id, user_id, road_id, urr_info, urr_firstpic, urr_secondpic, urr_thirdpic, urr_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from urrelation
+    where urr_id = #{urrId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from urrelation
+    where urr_id = #{urrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.jmu.entity.URRelation" >
+    insert into urrelation (urr_id, user_id, road_id, 
+      urr_info, urr_firstpic, urr_secondpic, 
+      urr_thirdpic, urr_time)
+    values (#{urrId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{roadId,jdbcType=INTEGER}, 
+      #{urrInfo,jdbcType=VARCHAR}, #{urrFirstpic,jdbcType=VARCHAR}, #{urrSecondpic,jdbcType=VARCHAR}, 
+      #{urrThirdpic,jdbcType=VARCHAR}, #{urrTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="org.jmu.entity.URRelation" >
+    insert into urrelation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="urrId != null" >
+        urr_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="roadId != null" >
+        road_id,
+      </if>
+      <if test="urrInfo != null" >
+        urr_info,
+      </if>
+      <if test="urrFirstpic != null" >
+        urr_firstpic,
+      </if>
+      <if test="urrSecondpic != null" >
+        urr_secondpic,
+      </if>
+      <if test="urrThirdpic != null" >
+        urr_thirdpic,
+      </if>
+      <if test="urrTime != null" >
+        urr_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="urrId != null" >
+        #{urrId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roadId != null" >
+        #{roadId,jdbcType=INTEGER},
+      </if>
+      <if test="urrInfo != null" >
+        #{urrInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="urrFirstpic != null" >
+        #{urrFirstpic,jdbcType=VARCHAR},
+      </if>
+      <if test="urrSecondpic != null" >
+        #{urrSecondpic,jdbcType=VARCHAR},
+      </if>
+      <if test="urrThirdpic != null" >
+        #{urrThirdpic,jdbcType=VARCHAR},
+      </if>
+      <if test="urrTime != null" >
+        #{urrTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.jmu.entity.URRelation" >
+    update urrelation
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="roadId != null" >
+        road_id = #{roadId,jdbcType=INTEGER},
+      </if>
+      <if test="urrInfo != null" >
+        urr_info = #{urrInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="urrFirstpic != null" >
+        urr_firstpic = #{urrFirstpic,jdbcType=VARCHAR},
+      </if>
+      <if test="urrSecondpic != null" >
+        urr_secondpic = #{urrSecondpic,jdbcType=VARCHAR},
+      </if>
+      <if test="urrThirdpic != null" >
+        urr_thirdpic = #{urrThirdpic,jdbcType=VARCHAR},
+      </if>
+      <if test="urrTime != null" >
+        urr_time = #{urrTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where urr_id = #{urrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.jmu.entity.URRelation" >
+    update urrelation
+    set user_id = #{userId,jdbcType=INTEGER},
+      road_id = #{roadId,jdbcType=INTEGER},
+      urr_info = #{urrInfo,jdbcType=VARCHAR},
+      urr_firstpic = #{urrFirstpic,jdbcType=VARCHAR},
+      urr_secondpic = #{urrSecondpic,jdbcType=VARCHAR},
+      urr_thirdpic = #{urrThirdpic,jdbcType=VARCHAR},
+      urr_time = #{urrTime,jdbcType=TIMESTAMP}
+    where urr_id = #{urrId,jdbcType=INTEGER}
+  </update>
+</mapper>
