@@ -21,4 +21,7 @@ public interface UserMapper {
 
     //用户登录
     public int userLogin(User user);
+
+    //用户注册
+    public int regUserAcc(User user);
 }

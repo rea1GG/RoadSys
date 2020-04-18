@@ -9,10 +9,15 @@
   <sql id="User_Column_List" >
     user_id, user_name, user_password
   </sql>
-
+<!--登录用户-->
   <select id="userLogin" resultType="java.lang.Integer" parameterType="org.jmu.entity.User">
         select count(*) from user where user_name = #{userName} AND user_password = #{userPassword}
   </select>
+
+<!--  <insert id="regUserAcc" parameterType="org.jmu.entity.User">-->
+<!--    insert user(user_-->
+<!--  </insert>-->
+
   <select id="selectByPrimaryKey" resultMap="UserResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="User_Column_List" />
@@ -23,13 +28,14 @@
     delete from user
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="org.jmu.entity.User" >
-    insert into user (user_id, user_name, user_password
-      )
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="org.jmu.entity.User" >
+<!--  <insert id="insert" parameterType="org.jmu.entity.User" >-->
+<!--    insert into user (user_id, user_name, user_password-->
+<!--      )-->
+<!--    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userPassword,jdbcType=VARCHAR}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  注册用户-->
+  <insert id="regUserAcc" parameterType="org.jmu.entity.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="userId != null" >
@@ -54,6 +60,7 @@
       </if>
     </trim>
   </insert>
+
   <update id="updateByPrimaryKeySelective" parameterType="org.jmu.entity.User" >
     update user
     <set >

@@ -15,4 +15,9 @@ public class UserServiceImpl implements UserService {
     public boolean userLogin(User user) {
         return userMapper.userLogin(user)>0 ;
     }
+
+    @Override
+    public boolean regUserAcc(User user) {
+        return userMapper.regUserAcc(user)>0;
+    }
 }

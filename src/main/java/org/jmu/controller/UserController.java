@@ -21,7 +21,10 @@ public class UserController {
     //登录
     @RequestMapping("/user/login")
     public boolean userLogin(User user){
-        System.out.println("11");
         return userService.userLogin(user);
+    }
+    @RequestMapping("/user/register")
+    public boolean regUserAcc(User user){
+        return userService.regUserAcc(user);
     }
 }
