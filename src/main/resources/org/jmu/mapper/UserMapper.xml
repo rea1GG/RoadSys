@@ -5,6 +5,17 @@
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <collection property="protectRoadSet" resultMap="PRResultMap">
+    </collection>
+  </resultMap>
+  <resultMap id="PRResultMap" type="org.jmu.entity.ProtectRoad" >
+    <id column="pr_id" property="prId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="road_id" property="roadId" jdbcType="INTEGER" />
+    <result column="pr_time" property="prTime" jdbcType="TIMESTAMP" />
+    <result column="pr_info" property="prInfo" jdbcType="VARCHAR" />
+    <result column="pr_pic" property="prPic" jdbcType="VARCHAR" />
+    <result column="pr_over_tag" property="prOverTag" jdbcType="INTEGER" />
   </resultMap>
   <sql id="User_Column_List" >
     user_id, user_name, user_password
@@ -13,10 +24,6 @@
   <select id="userLogin" resultType="java.lang.Integer" parameterType="org.jmu.entity.User">
         select count(*) from user where user_name = #{userName} AND user_password = #{userPassword}
   </select>
-
-<!--  <insert id="regUserAcc" parameterType="org.jmu.entity.User">-->
-<!--    insert user(user_-->
-<!--  </insert>-->
 
   <select id="selectByPrimaryKey" resultMap="UserResultMap" parameterType="java.lang.Integer" >
     select 

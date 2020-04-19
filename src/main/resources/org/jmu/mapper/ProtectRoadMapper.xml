@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.jmu.mapper.ProtectRoadMapper" >
-  <resultMap id="BaseResultMap" type="org.jmu.entity.ProtectRoad" >
+  <resultMap id="PRResultMap" type="org.jmu.entity.ProtectRoad" >
     <id column="pr_id" property="prId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="road_id" property="roadId" jdbcType="INTEGER" />
@@ -9,13 +9,21 @@
     <result column="pr_info" property="prInfo" jdbcType="VARCHAR" />
     <result column="pr_pic" property="prPic" jdbcType="VARCHAR" />
     <result column="pr_over_tag" property="prOverTag" jdbcType="INTEGER" />
+    <association property="user" resultMap="UserResultMap"></association>
   </resultMap>
-  <sql id="Base_Column_List" >
+  <resultMap id="UserResultMap" type="org.jmu.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+  <sql id="PR_Column_List" >
     pr_id, user_id, road_id, pr_time, pr_info, pr_pic, pr_over_tag
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="PRResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="PR_Column_List" />
     from protectroad
     where pr_id = #{prId,jdbcType=INTEGER}
   </select>

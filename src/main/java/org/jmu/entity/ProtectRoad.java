@@ -17,6 +17,17 @@ public class ProtectRoad {
 
     private Integer prOverTag;
 
+    //一对多个关系，一个用户可以提交多个道路养护信息。需要在多的一方添加一的实体
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getPrId() {
         return prId;
     }
