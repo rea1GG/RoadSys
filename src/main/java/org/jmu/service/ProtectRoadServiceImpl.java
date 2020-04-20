@@ -15,4 +15,9 @@ public class ProtectRoadServiceImpl implements ProtectRoadService {
     public boolean insertRoadInfo(ProtectRoad protectRoad) {
         return  protectRoadMapper.insertSelective(protectRoad)>0;
     }
+
+    @Override
+    public boolean insertImgInfo(String imgPic) {
+        return protectRoadMapper.insertImgInfo(imgPic)>0;
+    }
 }

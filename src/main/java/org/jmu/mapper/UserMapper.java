@@ -19,6 +19,8 @@ public interface UserMapper {
 
     int updateByPrimaryKey(User record);
 
+    //安卓用户登录
+    public User selectUserByName(String userName);
     //用户登录
     public int userLogin(User user);
 

@@ -20,6 +20,10 @@
   <sql id="User_Column_List" >
     user_id, user_name, user_password
   </sql>
+<!--  安卓用户登录-->
+  <select id="selectUserByName" parameterType="org.jmu.entity.User" resultMap="UserResultMap">
+    select * from user where user_name = #{userName}
+  </select>
 <!--登录用户-->
   <select id="userLogin" resultType="java.lang.Integer" parameterType="org.jmu.entity.User">
         select count(*) from user where user_name = #{userName} AND user_password = #{userPassword}

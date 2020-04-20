@@ -20,4 +20,9 @@ public class UserServiceImpl implements UserService {
     public boolean regUserAcc(User user) {
         return userMapper.regUserAcc(user)>0;
     }
+
+    @Override
+    public User getUser(String userName) {
+        return userMapper.selectUserByName(userName);
+    }
 }

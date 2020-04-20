@@ -7,4 +7,6 @@ public interface UserService {
     public boolean userLogin(User user);
     //用户注册
     public boolean regUserAcc(User user);
+    //安卓用户登录
+    public User getUser(String userName);
 }

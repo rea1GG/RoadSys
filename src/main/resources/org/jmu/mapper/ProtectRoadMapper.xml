@@ -21,6 +21,10 @@
   <sql id="PR_Column_List" >
     pr_id, user_id, road_id, pr_time, pr_info, pr_pic, pr_over_tag
   </sql>
+<!--    插入图片-->
+    <insert id="insertImgInfo" parameterType="java.lang.String">
+        insert into protectroad(pr_pic) values(#{prPic})
+    </insert>
   <select id="selectByPrimaryKey" resultMap="PRResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="PR_Column_List" />
@@ -39,6 +43,7 @@
       #{prTime,jdbcType=TIMESTAMP}, #{prInfo,jdbcType=VARCHAR}, #{prPic,jdbcType=VARCHAR}, 
       #{prOverTag,jdbcType=INTEGER})
   </insert>
+<!--    插入信息 -->
   <insert id="insertSelective" parameterType="org.jmu.entity.ProtectRoad" >
     insert into protectroad
     <trim prefix="(" suffix=")" suffixOverrides="," >
