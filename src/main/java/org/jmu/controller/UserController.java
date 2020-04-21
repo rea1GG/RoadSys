@@ -6,11 +6,14 @@ import org.jmu.entity.ResponseEntity;
 import org.jmu.entity.User;
 import org.jmu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
+@ResponseBody
 public class UserController {
     @Autowired
     UserService userService;
@@ -25,15 +28,15 @@ public class UserController {
         return userService.userLogin(user);
     }
     @RequestMapping("/android/login")
-    public ResponseEntity get(User user){
+    public ResponseEntity get(@RequestBody User user){
         ResponseEntity responseEntity = new ResponseEntity();
-        User user1 = userService.getUser(user.getUserName());
-        if (user.getUserPassword().equals(user1.getUserPassword())){
-            responseEntity.setStatus(200);
+        String password = userService.getUser(user.getUserName());
+        if (user.getUserPassword().equals(password)){
+            responseEntity.setCode(200);
             responseEntity.setMsg("登录成功");
             responseEntity.setData(user);
         }else{
-            responseEntity.setStatus(300);
+            responseEntity.setCode(300);
             responseEntity.setMsg("登录失败");
         }
         return responseEntity;

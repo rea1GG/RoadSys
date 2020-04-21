@@ -5,26 +5,20 @@ import java.io.Serializable;
 
 public class ResponseEntity<T> implements Serializable {
 
-    private int status;
+    private int code;
 
     private String msg;
 
     private T data;
 
 
-    public int getStatus() {
-
-        return status;
-
+    public int getCode() {
+        return code;
     }
 
-
-    public void setStatus(int status) {
-
-        this.status = status;
-
+    public void setCode(int code) {
+        this.code = code;
     }
-
 
     public String getMsg() {
 
@@ -56,9 +50,9 @@ public class ResponseEntity<T> implements Serializable {
     public ResponseEntity() {
     }
 
-    public ResponseEntity(int status, String msg, T data) {
+    public ResponseEntity(int code, String msg, T data) {
 
-        this.status = status;
+        this.code = code;
 
         this.msg = msg;
 
