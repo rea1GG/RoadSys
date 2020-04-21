@@ -1,7 +1,7 @@
 package org.jmu.controller;
 
 
-import org.apache.tomcat.util.Diagnostics;
+//import org.apache.tomcat.util.Diagnostics;
 import org.jmu.entity.ResponseEntity;
 import org.jmu.entity.User;
 import org.jmu.service.UserService;
@@ -27,6 +27,7 @@ public class UserController {
     public boolean userLogin(User user){
         return userService.userLogin(user);
     }
+
     @RequestMapping("/android/login")
     public ResponseEntity get(@RequestBody User user){
         ResponseEntity responseEntity = new ResponseEntity();
@@ -38,6 +39,20 @@ public class UserController {
         }else{
             responseEntity.setCode(300);
             responseEntity.setMsg("登录失败");
+        }
+        return responseEntity;
+    }
+    //安卓注册
+    @RequestMapping("/android/register")
+    public ResponseEntity register(@RequestBody User user){
+        ResponseEntity responseEntity = new ResponseEntity();
+        if(userService.regUserAcc(user)){
+            responseEntity.setCode(200);
+            responseEntity.setMsg("注册成功");
+            responseEntity.setData(user);
+        }else{
+            responseEntity.setCode(300);
+            responseEntity.setMsg("注册失败");
         }
         return responseEntity;
     }
