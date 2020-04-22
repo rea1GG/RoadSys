@@ -23,7 +23,7 @@
   </sql>
 <!--    插入图片-->
     <insert id="addImgToDb" >
-        insert into protectroad(pr_pic,user_id) values(#{picUrl},#{userId})
+        insert into protectroad(pr_pic,user_id,pr_info) values(#{picUrl},#{userId},#{prInfo})
     </insert>
   <select id="selectByPrimaryKey" resultMap="PRResultMap" parameterType="java.lang.Integer" >
     select 

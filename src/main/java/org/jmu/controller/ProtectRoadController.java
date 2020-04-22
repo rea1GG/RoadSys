@@ -30,11 +30,11 @@ public class ProtectRoadController {
     }
 
     @RequestMapping("/android/need/upload")
-    public ResponseEntity needUpload(@RequestParam("file") MultipartFile file, int userId) throws IOException {
+    public ResponseEntity needUpload(@RequestParam("file") MultipartFile file,int userId,String prInfo) throws IOException {
         ResponseEntity responseEntity = new ResponseEntity();
         String picUrl = protectRoadService.insertImgInfo(file).getData().toString();
         System.out.println(picUrl);
-        if(!protectRoadService.addImgToDb(picUrl,userId)){
+        if(!protectRoadService.addImgToDb(picUrl,userId,prInfo)){
             responseEntity.setCode(500);
             responseEntity.setMsg("插入失败");
         }
