@@ -12,8 +12,8 @@ public interface ProtectRoadMapper {
     int insert(ProtectRoad record);
     //通过mybatis反向工程生成的insert来实现对需要道路维护的信息添加
     int insertSelective(ProtectRoad record);
-    //先上传道路图片，再填写信息
-    int insertImgInfo(String picUrl);
+
+    public int addImgToDb(String picUrl,int userId);
 
     ProtectRoad selectByPrimaryKey(Integer prId);
 

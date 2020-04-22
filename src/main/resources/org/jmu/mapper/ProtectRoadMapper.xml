@@ -22,8 +22,8 @@
     pr_id, user_id, road_id, pr_time, pr_info, pr_pic, pr_over_tag
   </sql>
 <!--    插入图片-->
-    <insert id="insertImgInfo" parameterType="java.lang.String">
-        insert into protectroad(pr_pic) values(#{prPic})
+    <insert id="addImgToDb" >
+        insert into protectroad(pr_pic,user_id) values(#{picUrl},#{userId})
     </insert>
   <select id="selectByPrimaryKey" resultMap="PRResultMap" parameterType="java.lang.Integer" >
     select 
