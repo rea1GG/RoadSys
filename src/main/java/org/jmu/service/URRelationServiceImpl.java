@@ -1,6 +1,7 @@
 package org.jmu.service;
 
 import org.jmu.entity.ResponseEntity;
+import org.jmu.entity.URRelation;
 import org.jmu.mapper.URRelationMapper;
 import org.jmu.util.UploadFileUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,5 +32,10 @@ public class URRelationServiceImpl implements URRelationService {
         UploadFileUtil fileUtil = new UploadFileUtil();
 
         return fileUtil.uploadFile(file);
+    }
+
+    @Override
+    public List<URRelation> selectByTime(Timestamp beginTime, Timestamp endTime) {
+        return urRelationMapper.selectByTime(beginTime,endTime);
     }
 }

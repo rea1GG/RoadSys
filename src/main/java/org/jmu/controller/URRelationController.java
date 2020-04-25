@@ -1,6 +1,7 @@
 package org.jmu.controller;
 
 import org.jmu.entity.ResponseEntity;
+import org.jmu.entity.URRelation;
 import org.jmu.service.ProtectRoadService;
 import org.jmu.service.URRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,5 +43,9 @@ public class URRelationController {
             protectRoadService.updateTag(prId);
         }
         return responseEntity;
+    }
+    @RequestMapping("/android/work/query/time")
+    public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime){
+        return urRelationService.selectByTime(beginTime,endTime);
     }
 }

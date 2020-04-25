@@ -19,6 +19,16 @@ public class URRelation {
 
     private Date urrTime;
 
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Integer getUrrId() {
         return urrId;
     }

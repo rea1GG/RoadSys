@@ -10,14 +10,24 @@
     <result column="urr_secondpic" property="urrSecondpic" jdbcType="VARCHAR" />
     <result column="urr_thirdpic" property="urrThirdpic" jdbcType="VARCHAR" />
     <result column="urr_time" property="urrTime" jdbcType="TIMESTAMP" />
+    <association property="user" resultMap="UserResultMap"></association>
+  </resultMap>
+  <resultMap id="UserResultMap" type="org.jmu.entity.User" >
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
   </resultMap>
   
-  
+<!--  插入工作记录-->
   <insert id="insertWorkRecord">
     insert into urrelation (urr_firstpic,urr_secondpic,urr_thirdpic,user_id,urr_info) values (#{firstPicUrl},#{secondPicUrl},#{thirdPicUrl},#{userId},#{urrInfo});
   </insert>
-  
-  
+<!--  查询某个时间段的数据-->
+  <select id="selectByTime" resultMap="URRResultMap">
+    SELECT urr.urr_info,urr.urr_firstpic,urr.urr_secondpic,urr.urr_thirdpic,urr.urr_time,u.user_name
+    FROM urrelation urr,`user` u
+    WHERE  u.user_id = urr.user_id and UNIX_TIMESTAMP(urr.urr_time) > UNIX_TIMESTAMP(#{beginTime}) and UNIX_TIMESTAMP(urr.urr_time) &lt; UNIX_TIMESTAMP(#{endTime})
+  </select>
   
   
   

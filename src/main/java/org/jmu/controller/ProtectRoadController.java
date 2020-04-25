@@ -42,7 +42,7 @@ public class ProtectRoadController {
         }
         return protectRoadService.insertImgInfo(file);
     }
-    @RequestMapping("/android/inquiry")
+    @RequestMapping("/android/need/query")
     public List<ProtectRoad> selectByTag(){
         return protectRoadService.selectByTag();
     }

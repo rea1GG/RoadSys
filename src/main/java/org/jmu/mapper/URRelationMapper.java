@@ -4,6 +4,9 @@ import org.apache.ibatis.annotations.Mapper;
 import org.jmu.entity.URRelation;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 @Mapper
 @Repository
 public interface URRelationMapper {
@@ -15,7 +18,8 @@ public interface URRelationMapper {
 
     //插入工作记录
     int insertWorkRecord(String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo);
-
+    //按时间查询工作记录
+    public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime);
     URRelation selectByPrimaryKey(Integer urrId);
 
     int updateByPrimaryKeySelective(URRelation record);
