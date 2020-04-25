@@ -46,7 +46,7 @@ public class ProtectRoadController {
         String picUrl = protectRoadService.insertImgInfo(file).getData().toString();
         System.out.println(picUrl);
         int roadId = roadService.insetInfo(road);
-        if(!protectRoadService.addImgToDb(6,picUrl,userId,prInfo)){
+        if(!protectRoadService.addImgToDb(roadId,picUrl,userId,prInfo)){
             responseEntity.setCode(500);
             responseEntity.setMsg("插入失败");
         }

@@ -12,6 +12,7 @@ public class RoadServiceImpl implements RoadService {
 
     @Override
     public int insetInfo(Road road) {
-        return roadMapper.insertInfo(road);
+        roadMapper.insertInfo(road);
+        return road.getRoadId();
     }
 }

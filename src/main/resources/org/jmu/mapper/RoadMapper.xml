@@ -8,7 +8,7 @@
     <result column="road_info" property="roadInfo" jdbcType="VARCHAR" />
   </resultMap>
 
-  <insert id="insertInfo" parameterType="org.jmu.entity.Road" useGeneratedKeys="true" keyProperty="userId">
+  <insert id="insertInfo" parameterType="org.jmu.entity.Road" useGeneratedKeys="true" keyProperty="roadId">
     INSERT INTO road(road.road_area,road.road_name,road.road_info) VALUES(#{roadArea},#{roadName},#{roadInfo})
   </insert>
 
