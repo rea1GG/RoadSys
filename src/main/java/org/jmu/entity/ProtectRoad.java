@@ -20,6 +20,16 @@ public class ProtectRoad {
     //一对多个关系，一个用户可以提交多个道路养护信息。需要在多的一方添加一的实体
     private User user;
 
+    private Road road;
+
+    public Road getRoad() {
+        return road;
+    }
+
+    public void setRoad(Road road) {
+        this.road = road;
+    }
+
     public User getUser() {
         return user;
     }

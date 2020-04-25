@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.util.UriBuilder;
 
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -61,5 +62,9 @@ public class URRelationController {
     @RequestMapping("/android/work/query/name")
     public List<URRelation> selectByName(String userName){
         return urRelationService.selectByName(userName);
+    }
+    @RequestMapping("/android/work/query/area")
+    public List<URRelation> selectByArea(String roadArea){
+        return urRelationService.selectByArea(roadArea);
     }
 }

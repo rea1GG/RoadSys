@@ -10,11 +10,18 @@
     <result column="pr_pic" property="prPic" jdbcType="VARCHAR" />
     <result column="pr_over_tag" property="prOverTag" jdbcType="INTEGER" />
     <association property="user" resultMap="UserResultMap"></association>
+    <association property="road" resultMap="RoadResultMap"></association>
   </resultMap>
   <resultMap id="UserResultMap" type="org.jmu.entity.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="RoadResultMap" type="org.jmu.entity.Road" >
+    <id column="road_id" property="roadId" jdbcType="INTEGER" />
+    <result column="road_name" property="roadName" jdbcType="VARCHAR" />
+    <result column="road_area" property="roadArea" jdbcType="VARCHAR" />
+    <result column="road_info" property="roadInfo" jdbcType="VARCHAR" />
   </resultMap>
 
 

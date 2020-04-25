@@ -22,6 +22,8 @@ public interface URRelationMapper {
     public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime);
     //按用户id查询工作记录
     public List<URRelation> selectByUserName(String userName);
+    //按地域查询
+    public  List<URRelation> selectByArea(String roadArea);
 
     URRelation selectByPrimaryKey(Integer urrId);
 

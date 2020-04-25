@@ -11,12 +11,20 @@
     <result column="urr_thirdpic" property="urrThirdpic" jdbcType="VARCHAR" />
     <result column="urr_time" property="urrTime" jdbcType="TIMESTAMP" />
     <association property="user" resultMap="UserResultMap"></association>
+    <association property="road" resultMap="RoadResultMap"></association>
   </resultMap>
   <resultMap id="UserResultMap" type="org.jmu.entity.User" >
     <id column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="user_name" property="userName" jdbcType="VARCHAR" />
     <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
   </resultMap>
+    <resultMap id="RoadResultMap" type="org.jmu.entity.Road" >
+        <id column="road_id" property="roadId" jdbcType="INTEGER" />
+        <result column="road_name" property="roadName" jdbcType="VARCHAR" />
+        <result column="road_area" property="roadArea" jdbcType="VARCHAR" />
+        <result column="road_info" property="roadInfo" jdbcType="VARCHAR" />
+    </resultMap>
+
   
 <!--  插入工作记录-->
   <insert id="insertWorkRecord">
@@ -32,6 +40,12 @@
   <select id="selectByUserName" resultMap="URRResultMap">
     SELECT urr.urr_info,urr.urr_firstpic,urr.urr_secondpic,urr.urr_thirdpic,urr.urr_time,u.user_name,r.road_area,r.road_name,r.road_info  FROM urrelation urr,`user` u ,road r WHERE r.road_id = urr.road_id and u.user_id = urr.user_id and u.user_name = #{userName}
   </select>
+<!--   通过地区查询符合的工作记录-->
+    <select id="selectByArea" resultMap="URRResultMap">
+	SELECT urr.urr_info,urr.urr_firstpic,urr.urr_secondpic,urr.urr_thirdpic,urr.urr_time,u.user_name,r.road_area,r.road_name,r.road_info  FROM urrelation urr,`user` u ,road r WHERE r.road_id = urr.road_id and u.user_id = urr.user_id and r.road_area = #{roadArea}
+    </select>
+
+
   
   
   

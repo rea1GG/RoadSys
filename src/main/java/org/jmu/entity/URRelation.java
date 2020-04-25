@@ -21,6 +21,16 @@ public class URRelation {
 
     private User user;
 
+    private Road road;
+
+    public Road getRoad() {
+        return road;
+    }
+
+    public void setRoad(Road road) {
+        this.road = road;
+    }
+
     public User getUser() {
         return user;
     }

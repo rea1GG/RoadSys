@@ -43,4 +43,9 @@ public class URRelationServiceImpl implements URRelationService {
     public List<URRelation> selectByName(String userName) {
         return urRelationMapper.selectByUserName(userName);
     }
+
+    @Override
+    public List<URRelation> selectByArea(String roadArea) {
+        return urRelationMapper.selectByArea(roadArea);
+    }
 }
