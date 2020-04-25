@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.jmu.mapper.URRelationMapper" >
-  <resultMap id="BaseResultMap" type="org.jmu.entity.URRelation" >
+  <resultMap id="URRResultMap" type="org.jmu.entity.URRelation" >
     <id column="urr_id" property="urrId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="road_id" property="roadId" jdbcType="INTEGER" />
@@ -11,12 +11,34 @@
     <result column="urr_thirdpic" property="urrThirdpic" jdbcType="VARCHAR" />
     <result column="urr_time" property="urrTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  
+  
+  <insert id="insertWorkRecord">
+    insert into urrelation (urr_firstpic,urr_secondpic,urr_thirdpic,user_id,urr_info) values (#{firstPicUrl},#{secondPicUrl},#{thirdPicUrl},#{userId},#{urrInfo});
+  </insert>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <sql id="URRelation_Column_List" >
     urr_id, user_id, road_id, urr_info, urr_firstpic, urr_secondpic, urr_thirdpic, urr_time
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="URRResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="URRelation_Column_List" />
     from urrelation
     where urr_id = #{urrId,jdbcType=INTEGER}
   </select>

@@ -1,13 +1,20 @@
 package org.jmu.mapper;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.jmu.entity.URRelation;
+import org.springframework.stereotype.Repository;
 
+@Mapper
+@Repository
 public interface URRelationMapper {
     int deleteByPrimaryKey(Integer urrId);
 
     int insert(URRelation record);
 
     int insertSelective(URRelation record);
+
+    //插入工作记录
+    int insertWorkRecord(String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo);
 
     URRelation selectByPrimaryKey(Integer urrId);
 
