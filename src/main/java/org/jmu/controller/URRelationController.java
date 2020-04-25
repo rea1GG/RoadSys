@@ -48,4 +48,8 @@ public class URRelationController {
     public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime){
         return urRelationService.selectByTime(beginTime,endTime);
     }
+    @RequestMapping("/android/work/query/name")
+    public List<URRelation> selectByName(String userName){
+        return urRelationService.selectByName(userName);
+    }
 }

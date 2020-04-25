@@ -20,6 +20,9 @@ public interface URRelationMapper {
     int insertWorkRecord(String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo);
     //按时间查询工作记录
     public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime);
+    //按用户id查询工作记录
+    public List<URRelation> selectByUserName(String userName);
+
     URRelation selectByPrimaryKey(Integer urrId);
 
     int updateByPrimaryKeySelective(URRelation record);

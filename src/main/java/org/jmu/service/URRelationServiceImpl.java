@@ -38,4 +38,9 @@ public class URRelationServiceImpl implements URRelationService {
     public List<URRelation> selectByTime(Timestamp beginTime, Timestamp endTime) {
         return urRelationMapper.selectByTime(beginTime,endTime);
     }
+
+    @Override
+    public List<URRelation> selectByName(String userName) {
+        return urRelationMapper.selectByUserName(userName);
+    }
 }

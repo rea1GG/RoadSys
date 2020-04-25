@@ -15,4 +15,6 @@ public interface URRelationService {
     public ResponseEntity insertImgInfo(MultipartFile file) throws IOException;
     //查询一个时间段中的工作记录
     public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime);
+    //通过用户名查询该用户所有工作记录
+    public List<URRelation> selectByName(String userName);
 }
