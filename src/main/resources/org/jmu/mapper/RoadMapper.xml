@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.jmu.mapper.RoadMapper" >
-  <resultMap id="BaseResultMap" type="org.jmu.entity.Road" >
+  <resultMap id="RoadResultMap" type="org.jmu.entity.Road" >
     <id column="road_id" property="roadId" jdbcType="INTEGER" />
     <result column="road_name" property="roadName" jdbcType="VARCHAR" />
-    <result column="rl_id" property="rlId" jdbcType="INTEGER" />
+    <result column="road_area" property="roadArea" jdbcType="VARCHAR" />
+    <result column="road_info" property="roadInfo" jdbcType="VARCHAR" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    road_id, road_name, rl_id, user_id
+
+  <insert id="insertInfo" parameterType="org.jmu.entity.Road" useGeneratedKeys="true" keyProperty="userId">
+    INSERT INTO road(road.road_area,road.road_name,road.road_info) VALUES(#{roadArea},#{roadName},#{roadInfo})
+  </insert>
+
+
+
+
+
+
+
+
+
+
+
+  <sql id="Road_Column_List" >
+    road_id, road_name, road_area, road_info
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" resultMap="RoadResultMap" parameterType="java.lang.Integer" >
     select 
-    <include refid="Base_Column_List" />
+    <include refid="Road_Column_List" />
     from road
     where road_id = #{roadId,jdbcType=INTEGER}
   </select>
@@ -20,10 +36,10 @@
     where road_id = #{roadId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="org.jmu.entity.Road" >
-    insert into road (road_id, road_name, rl_id, 
-      user_id)
-    values (#{roadId,jdbcType=INTEGER}, #{roadName,jdbcType=VARCHAR}, #{rlId,jdbcType=INTEGER}, 
-      #{userId,jdbcType=INTEGER})
+    insert into road (road_id, road_name, road_area, 
+      road_info)
+    values (#{roadId,jdbcType=INTEGER}, #{roadName,jdbcType=VARCHAR}, #{roadArea,jdbcType=VARCHAR}, 
+      #{roadInfo,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="org.jmu.entity.Road" >
     insert into road
@@ -34,11 +50,11 @@
       <if test="roadName != null" >
         road_name,
       </if>
-      <if test="rlId != null" >
-        rl_id,
+      <if test="roadArea != null" >
+        road_area,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="roadInfo != null" >
+        road_info,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -48,11 +64,11 @@
       <if test="roadName != null" >
         #{roadName,jdbcType=VARCHAR},
       </if>
-      <if test="rlId != null" >
-        #{rlId,jdbcType=INTEGER},
+      <if test="roadArea != null" >
+        #{roadArea,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+      <if test="roadInfo != null" >
+        #{roadInfo,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -62,11 +78,11 @@
       <if test="roadName != null" >
         road_name = #{roadName,jdbcType=VARCHAR},
       </if>
-      <if test="rlId != null" >
-        rl_id = #{rlId,jdbcType=INTEGER},
+      <if test="roadArea != null" >
+        road_area = #{roadArea,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="roadInfo != null" >
+        road_info = #{roadInfo,jdbcType=VARCHAR},
       </if>
     </set>
     where road_id = #{roadId,jdbcType=INTEGER}
@@ -74,8 +90,8 @@
   <update id="updateByPrimaryKey" parameterType="org.jmu.entity.Road" >
     update road
     set road_name = #{roadName,jdbcType=VARCHAR},
-      rl_id = #{rlId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER}
+      road_area = #{roadArea,jdbcType=VARCHAR},
+      road_info = #{roadInfo,jdbcType=VARCHAR}
     where road_id = #{roadId,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -9,22 +9,6 @@ public class Road {
 
     private String roadInfo;
 
-    public String getRoadArea() {
-        return roadArea;
-    }
-
-    public void setRoadArea(String roadArea) {
-        this.roadArea = roadArea;
-    }
-
-    public String getRoadInfo() {
-        return roadInfo;
-    }
-
-    public void setRoadInfo(String roadInfo) {
-        this.roadInfo = roadInfo;
-    }
-
     public Integer getRoadId() {
         return roadId;
     }
@@ -41,4 +25,19 @@ public class Road {
         this.roadName = roadName == null ? null : roadName.trim();
     }
 
+    public String getRoadArea() {
+        return roadArea;
+    }
+
+    public void setRoadArea(String roadArea) {
+        this.roadArea = roadArea == null ? null : roadArea.trim();
+    }
+
+    public String getRoadInfo() {
+        return roadInfo;
+    }
+
+    public void setRoadInfo(String roadInfo) {
+        this.roadInfo = roadInfo == null ? null : roadInfo.trim();
+    }
 }

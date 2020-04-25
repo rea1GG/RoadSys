@@ -34,8 +34,8 @@ public class ProtectRoadServiceImpl implements ProtectRoadService {
     }
 
     @Override
-    public boolean addImgToDb(String picUrl,int userId,String prInfo) {
-        return protectRoadMapper.addImgToDb(picUrl,userId,prInfo)>0;
+    public boolean addImgToDb(int roadId,String picUrl,int userId,String prInfo) {
+        return protectRoadMapper.addImgToDb(roadId,picUrl,userId,prInfo)>0;
     }
 
     @Override
