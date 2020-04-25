@@ -40,4 +40,8 @@ public class ProtectRoadController {
         }
         return protectRoadService.insertImgInfo(file);
     }
+    @RequestMapping("/test")
+    public ResponseEntity test(int userId,String prInfo){
+        return protectRoadService.insertInfo(userId,prInfo);
+    }
 }

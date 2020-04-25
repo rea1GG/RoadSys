@@ -15,6 +15,8 @@ public interface ProtectRoadMapper {
 
     public int addImgToDb(String picUrl,int userId,String prInfo);
 
+    public int addInfo (int userId, String prInfo);
+
     ProtectRoad selectByPrimaryKey(Integer prId);
 
     int updateByPrimaryKeySelective(ProtectRoad record);

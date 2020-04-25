@@ -5,7 +5,6 @@
     <id column="road_id" property="roadId" jdbcType="INTEGER" />
     <result column="road_name" property="roadName" jdbcType="VARCHAR" />
     <result column="rl_id" property="rlId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
     road_id, road_name, rl_id, user_id

@@ -7,8 +7,6 @@ public class Road {
 
     private Integer rlId;
 
-    private Integer userId;
-
     public Integer getRoadId() {
         return roadId;
     }
@@ -31,14 +29,6 @@ public class Road {
 
     public void setRlId(Integer rlId) {
         this.rlId = rlId;
-    }
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
     }
 
 

@@ -51,4 +51,17 @@ public class ProtectRoadServiceImpl implements ProtectRoadService {
     public boolean addImgToDb(String picUrl,int userId,String prInfo) {
         return protectRoadMapper.addImgToDb(picUrl,userId,prInfo)>0;
     }
+
+    @Override
+    public ResponseEntity insertInfo(int userId, String prInfo) {
+        ResponseEntity responseEntity = new ResponseEntity();
+        if(protectRoadMapper.addInfo(userId,prInfo)>1){
+            responseEntity.setCode(200);
+            responseEntity.setMsg("success");
+        }else{
+            responseEntity.setCode(500);
+            responseEntity.setMsg("fail");
+        }
+        return responseEntity;
+    }
 }
