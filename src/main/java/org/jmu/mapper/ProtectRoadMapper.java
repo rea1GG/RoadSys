@@ -16,6 +16,8 @@ public interface ProtectRoadMapper {
     public int addImgToDb(String picUrl,int userId,String prInfo);
 
     public int addInfo (int userId, String prInfo);
+    //修改ProtectRoad的tag
+    public int updateTag(int prId);
 
     ProtectRoad selectByPrimaryKey(Integer prId);
 

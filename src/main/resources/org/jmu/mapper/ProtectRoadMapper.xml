@@ -28,6 +28,24 @@
     <insert id="addInfo" >
         insert into protectroad(user_id,pr_info) values (#{userId},#{prInfo})
     </insert>
+<!--    修改tag-->
+    <update id="updateTag" parameterType="java.lang.Integer">
+      UPDATE protectroad set pr_over_tag = 1 where pr_id = #{prId,jdbcType=INTEGER}
+    </update>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <select id="selectByPrimaryKey" resultMap="PRResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="PR_Column_List" />

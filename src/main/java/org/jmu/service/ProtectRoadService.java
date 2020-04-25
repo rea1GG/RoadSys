@@ -13,6 +13,8 @@ public interface ProtectRoadService {
     public ResponseEntity insertImgInfo(MultipartFile file) throws IOException;
     //插入需要维护的道路信息到数据库
     public boolean addImgToDb(String picUrl,int userId,String prInfo);
+    //修改需要维护道路的tag
+    public boolean updateTag(int prId);
     //test
     public ResponseEntity insertInfo(int userId,String prInfo);
 }

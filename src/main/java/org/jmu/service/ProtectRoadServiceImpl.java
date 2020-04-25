@@ -38,6 +38,11 @@ public class ProtectRoadServiceImpl implements ProtectRoadService {
     }
 
     @Override
+    public boolean updateTag(int prId) {
+        return protectRoadMapper.updateTag(prId)>0;
+    }
+
+    @Override
     public ResponseEntity insertInfo(int userId, String prInfo) {
         ResponseEntity responseEntity = new ResponseEntity();
         if(protectRoadMapper.addInfo(userId,prInfo)>1){

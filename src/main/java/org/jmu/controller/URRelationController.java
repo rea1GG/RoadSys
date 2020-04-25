@@ -1,6 +1,7 @@
 package org.jmu.controller;
 
 import org.jmu.entity.ResponseEntity;
+import org.jmu.service.ProtectRoadService;
 import org.jmu.service.URRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,9 +17,11 @@ import java.util.List;
 public class URRelationController {
     @Autowired
     URRelationService urRelationService;
-
+    //引入ProtectRoad，为了在用户上传工作记录之后，将待维修的道路tag改为1
+    @Autowired
+    ProtectRoadService protectRoadService;
     @RequestMapping("/android/work/upload")
-    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo) throws IOException {
+    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo,int prId) throws IOException {
         ResponseEntity responseEntity = new ResponseEntity();
         List urlList = new ArrayList();
         int i=0;
@@ -35,6 +38,7 @@ public class URRelationController {
         }else{
             responseEntity.setCode(200);
             responseEntity.setMsg("插入成功");
+            protectRoadService.updateTag(prId);
         }
         return responseEntity;
     }
