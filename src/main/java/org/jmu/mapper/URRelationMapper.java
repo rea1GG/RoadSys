@@ -17,7 +17,7 @@ public interface URRelationMapper {
     int insertSelective(URRelation record);
 
     //插入工作记录
-    int insertWorkRecord(String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo);
+    int insertWorkRecord(int roadId,String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo);
     //按时间查询工作记录
     public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime);
     //按用户id查询工作记录

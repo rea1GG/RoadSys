@@ -1,8 +1,10 @@
 package org.jmu.controller;
 
 import org.jmu.entity.ResponseEntity;
+import org.jmu.entity.Road;
 import org.jmu.entity.URRelation;
 import org.jmu.service.ProtectRoadService;
+import org.jmu.service.RoadService;
 import org.jmu.service.URRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,9 +24,17 @@ public class URRelationController {
     //引入ProtectRoad，为了在用户上传工作记录之后，将待维修的道路tag改为1
     @Autowired
     ProtectRoadService protectRoadService;
+    //引入Road为了主键回调
+    @Autowired
+    RoadService roadService;
     @RequestMapping("/android/work/upload")
-    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo,int prId) throws IOException {
+    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo,int prId,String roadArea,String roadName,String roadInfo) throws IOException {
         ResponseEntity responseEntity = new ResponseEntity();
+        Road road = new Road();
+        road.setRoadInfo(roadInfo);
+        road.setRoadName(roadName);
+        road.setRoadArea(roadArea);
+        int roadId = roadService.insetInfo(road);
         List urlList = new ArrayList();
         int i=0;
         for (MultipartFile f:files) {
@@ -34,7 +44,7 @@ public class URRelationController {
             i++;
         }
 
-        if(!urRelationService.addWorkRecore(urlList.get(0).toString(),urlList.get(1).toString(),urlList.get(2).toString(),userId,urrInfo)){
+        if(!urRelationService.addWorkRecore(roadId,urlList.get(0).toString(),urlList.get(1).toString(),urlList.get(2).toString(),userId,urrInfo)){
             responseEntity.setCode(500);
             responseEntity.setMsg("插入失败");
         }else{

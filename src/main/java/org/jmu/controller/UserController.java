@@ -31,7 +31,7 @@ public class UserController {
     @RequestMapping("/android/login")
     public ResponseEntity get(@RequestBody User user){
         ResponseEntity responseEntity = new ResponseEntity();
-        String password = userService.getUser(user.getUserName());
+        String password = userService.getUser(user.getUserName()).getUserPassword();
         if (user.getUserPassword().equals(password)){
             responseEntity.setCode(200);
             responseEntity.setMsg("登录成功");

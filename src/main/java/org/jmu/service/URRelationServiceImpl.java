@@ -20,8 +20,8 @@ public class URRelationServiceImpl implements URRelationService {
     URRelationMapper urRelationMapper;
 
     @Override
-    public boolean addWorkRecore(String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo) {
-        if(urRelationMapper.insertWorkRecord(firstPicUrl,secondPicUrl,thirdPicUrl,userId,urrInfo)>0)
+    public boolean addWorkRecore(int roadId,String firstPicUrl, String secondPicUrl, String thirdPicUrl, int userId, String urrInfo) {
+        if(urRelationMapper.insertWorkRecord(roadId,firstPicUrl,secondPicUrl,thirdPicUrl,userId,urrInfo)>0)
             return true;
         else
             return false;

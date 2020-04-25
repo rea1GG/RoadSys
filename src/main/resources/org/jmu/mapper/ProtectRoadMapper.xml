@@ -34,7 +34,7 @@
     </update>
 <!--  查询未维修的道路信息-->
     <select id="selectByTag" resultMap="PRResultMap">
-      SELECT pr.pr_info,pr.pr_pic,pr.pr_time,u.user_name FROM protectroad pr,`user` u WHERE pr_over_tag = 0 and u.user_id = pr.user_id
+      SELECT pr.pr_info,pr.pr_pic,pr.pr_time,u.user_name,r.road_area,r.road_name,r.road_info FROM protectroad pr,`user` u ,road r WHERE pr_over_tag = 0 and u.user_id = pr.user_id and r.road_id = pr.road_id
     </select>
 
 
