@@ -32,7 +32,10 @@
     <update id="updateTag" parameterType="java.lang.Integer">
       UPDATE protectroad set pr_over_tag = 1 where pr_id = #{prId,jdbcType=INTEGER}
     </update>
-
+<!--  查询未维修的道路信息-->
+    <select id="selectByTag" resultMap="PRResultMap">
+      SELECT pr.pr_info,pr.pr_pic,pr.pr_time,u.user_name FROM protectroad pr,`user` u WHERE pr_over_tag = 0 and u.user_id = pr.user_id
+    </select>
 
 
 

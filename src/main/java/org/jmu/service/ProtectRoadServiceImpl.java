@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ProtectRoadServiceImpl implements ProtectRoadService {
@@ -40,6 +41,11 @@ public class ProtectRoadServiceImpl implements ProtectRoadService {
     @Override
     public boolean updateTag(int prId) {
         return protectRoadMapper.updateTag(prId)>0;
+    }
+
+    @Override
+    public List<ProtectRoad> selectByTag() {
+        return protectRoadMapper.selectByTag();
     }
 
     @Override

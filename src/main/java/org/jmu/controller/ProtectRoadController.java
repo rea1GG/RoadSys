@@ -42,6 +42,10 @@ public class ProtectRoadController {
         }
         return protectRoadService.insertImgInfo(file);
     }
+    @RequestMapping("/android/inquiry")
+    public List<ProtectRoad> selectByTag(){
+        return protectRoadService.selectByTag();
+    }
     @RequestMapping("/test")
     public ResponseEntity test(int userId,String prInfo){
         return protectRoadService.insertInfo(userId,prInfo);

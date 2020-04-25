@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.jmu.entity.ProtectRoad;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface ProtectRoadMapper {
@@ -18,6 +20,8 @@ public interface ProtectRoadMapper {
     public int addInfo (int userId, String prInfo);
     //修改ProtectRoad的tag
     public int updateTag(int prId);
+    //查询所有待维修的道路信息
+    public List<ProtectRoad> selectByTag();
 
     ProtectRoad selectByPrimaryKey(Integer prId);
 
