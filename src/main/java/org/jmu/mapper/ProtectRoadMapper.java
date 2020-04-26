@@ -22,6 +22,10 @@ public interface ProtectRoadMapper {
     public int updateTag(int prId);
     //查询所有待维修的道路信息
     public List<ProtectRoad> selectByTag();
+    //查询简单信息
+    public List<ProtectRoad> selectSimpleInfo();
+    //返回维修的道路的id
+    public int selectRoadIdById(int prId);
 
     ProtectRoad selectByPrimaryKey(Integer prId);
 

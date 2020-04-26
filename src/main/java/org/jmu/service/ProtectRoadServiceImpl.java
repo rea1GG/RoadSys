@@ -49,6 +49,16 @@ public class ProtectRoadServiceImpl implements ProtectRoadService {
     }
 
     @Override
+    public List<ProtectRoad> selectSimpleInfo() {
+        return protectRoadMapper.selectSimpleInfo();
+    }
+
+    @Override
+    public int selectRoadIdById(int prId) {
+        return protectRoadMapper.selectRoadIdById(prId);
+    }
+
+    @Override
     public ResponseEntity insertInfo(int userId, String prInfo) {
         ResponseEntity responseEntity = new ResponseEntity();
         if(protectRoadMapper.addInfo(userId,prInfo)>1){

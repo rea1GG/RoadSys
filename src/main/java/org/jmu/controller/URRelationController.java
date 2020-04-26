@@ -29,13 +29,9 @@ public class URRelationController {
     @Autowired
     RoadService roadService;
     @RequestMapping("/android/work/upload")
-    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo,int prId,String roadArea,String roadName,String roadInfo) throws IOException {
+    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo,int prId) throws IOException {
         ResponseEntity responseEntity = new ResponseEntity();
-        Road road = new Road();
-        road.setRoadInfo(roadInfo);
-        road.setRoadName(roadName);
-        road.setRoadArea(roadArea);
-        int roadId = roadService.insetInfo(road);
+        int roadId = protectRoadService.selectRoadIdById(prId);
         List urlList = new ArrayList();
         int i=0;
         for (MultipartFile f:files) {

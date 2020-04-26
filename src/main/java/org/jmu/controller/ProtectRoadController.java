@@ -56,6 +56,10 @@ public class ProtectRoadController {
     public List<ProtectRoad> selectByTag(){
         return protectRoadService.selectByTag();
     }
+    @RequestMapping("/android/need/query/simple")
+    public List<ProtectRoad> selectSimpleInfo(){
+        return protectRoadService.selectSimpleInfo();
+    }
     @RequestMapping("/test")
     public ResponseEntity test(int userId,String prInfo){
         return protectRoadService.insertInfo(userId,prInfo);

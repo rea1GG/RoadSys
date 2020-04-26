@@ -18,6 +18,10 @@ public interface ProtectRoadService {
     public boolean updateTag(int prId);
     //查询tag为0的道路信息
     public List<ProtectRoad> selectByTag();
+    //查询简单信息
+    public List<ProtectRoad> selectSimpleInfo();
+    //查询roadID
+    public int selectRoadIdById(int prId);
     //test
     public ResponseEntity insertInfo(int userId,String prInfo);
 }

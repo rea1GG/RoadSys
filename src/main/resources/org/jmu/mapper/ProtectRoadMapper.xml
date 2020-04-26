@@ -41,10 +41,16 @@
     </update>
 <!--  查询未维修的道路信息-->
     <select id="selectByTag" resultMap="PRResultMap">
-      SELECT pr.pr_info,pr.pr_pic,pr.pr_time,u.user_name,r.road_area,r.road_name,r.road_info FROM protectroad pr,`user` u ,road r WHERE pr_over_tag = 0 and u.user_id = pr.user_id and r.road_id = pr.road_id
+      SELECT pr.pr_id ,pr.pr_info,pr.pr_pic,pr.pr_time,u.user_name,r.road_area,r.road_name,r.road_info FROM protectroad pr,`user` u ,road r WHERE pr_over_tag = 0 and u.user_id = pr.user_id and r.road_id = pr.road_id
     </select>
-
-
+<!--查询简单信息-->
+    <select id="selectSimpleInfo" resultMap="PRResultMap">
+    SELECT pr.pr_info,pr.pr_time,u.user_name,r.road_area,r.road_name,pr.pr_id FROM protectroad pr,`user` u ,road r WHERE pr_over_tag = 0 and u.user_id = pr.user_id and r.road_id = pr.road_id
+    </select>
+<!--查询roadId-->
+    <select id="selectRoadIdById" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+        SELECT road_id FROM protectroad where pr_id = #{prId}
+    </select>
 
 
 
