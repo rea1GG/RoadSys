@@ -28,10 +28,10 @@ public class URRelationServiceImpl implements URRelationService {
     }
 
     @Override
-    public ResponseEntity insertImgInfo(MultipartFile file) throws IOException {
+    public ResponseEntity insertImgInfo(MultipartFile file,int fName) throws IOException {
         UploadFileUtil fileUtil = new UploadFileUtil();
 
-        return fileUtil.uploadFile(file);
+        return fileUtil.uploadFile(file,fName);
     }
 
     @Override

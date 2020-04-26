@@ -10,15 +10,15 @@ public class User {
     private String userPassword;
 
     //一对多个关系，一个用户可以提交多个道路养护信息。需要在一的一方添加一个多的set
-    private Set<ProtectRoad> protectRoadset;
+//    private Set<ProtectRoad> protectRoadset;
 
-    public Set<ProtectRoad> getProtectRoadset() {
-        return protectRoadset;
-    }
-
-    public void setProtectRoadset(Set<ProtectRoad> protectRoadset) {
-        this.protectRoadset = protectRoadset;
-    }
+//    public Set<ProtectRoad> getProtectRoadset() {
+//        return protectRoadset;
+//    }
+//
+//    public void setProtectRoadset(Set<ProtectRoad> protectRoadset) {
+//        this.protectRoadset = protectRoadset;
+//    }
 
     public Integer getUserId() {
         return userId;

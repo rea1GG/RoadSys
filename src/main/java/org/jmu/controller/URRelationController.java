@@ -28,39 +28,43 @@ public class URRelationController {
     //引入Road为了主键回调
     @Autowired
     RoadService roadService;
+
     @RequestMapping("/android/work/upload")
-    public ResponseEntity wordUpload(@RequestParam("file")  MultipartFile[] files, int userId, String urrInfo,int prId) throws IOException {
+    public ResponseEntity wordUpload(@RequestParam("file") MultipartFile[] files, int userId, String urrInfo, int prId) throws IOException {
         ResponseEntity responseEntity = new ResponseEntity();
         int roadId = protectRoadService.selectRoadIdById(prId);
         List urlList = new ArrayList();
-        int i=0;
-        for (MultipartFile f:files) {
+        int i = 0;
+        for (MultipartFile f : files) {
 
-            urlList.add(urRelationService.insertImgInfo(f).getData().toString());
+            urlList.add(urRelationService.insertImgInfo(f, i).getData().toString());
             System.out.println(urlList.get(i));
             i++;
         }
 
-        if(!urRelationService.addWorkRecore(roadId,urlList.get(0).toString(),urlList.get(1).toString(),urlList.get(2).toString(),userId,urrInfo)){
+        if (!urRelationService.addWorkRecore(roadId, urlList.get(0).toString(), urlList.get(1).toString(), urlList.get(2).toString(), userId, urrInfo)) {
             responseEntity.setCode(500);
             responseEntity.setMsg("插入失败");
-        }else{
+        } else {
             responseEntity.setCode(200);
             responseEntity.setMsg("插入成功");
             protectRoadService.updateTag(prId);
         }
         return responseEntity;
     }
+
     @RequestMapping("/android/work/query/time")
-    public List<URRelation> selectByTime(Timestamp beginTime,Timestamp endTime){
-        return urRelationService.selectByTime(beginTime,endTime);
+    public List<URRelation> selectByTime(Timestamp beginTime, Timestamp endTime) {
+        return urRelationService.selectByTime(beginTime, endTime);
     }
+
     @RequestMapping("/android/work/query/name")
-    public List<URRelation> selectByName(String userName){
+    public List<URRelation> selectByName(String userName) {
         return urRelationService.selectByName(userName);
     }
+
     @RequestMapping("/android/work/query/area")
-    public List<URRelation> selectByArea(String roadArea){
+    public List<URRelation> selectByArea(String roadArea) {
         return urRelationService.selectByArea(roadArea);
     }
 }
