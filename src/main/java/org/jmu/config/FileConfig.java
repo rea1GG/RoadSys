@@ -12,7 +12,7 @@ public class FileConfig {
     @Bean
     MultipartConfigElement multipartConfigElement() {
         MultipartConfigFactory factory = new MultipartConfigFactory();
-        factory.setLocation("E:\\Road\\");
+        factory.setLocation("/road/");
         return factory.createMultipartConfig();
     }
 }

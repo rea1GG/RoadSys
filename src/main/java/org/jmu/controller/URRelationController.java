@@ -7,6 +7,7 @@ import org.jmu.service.ProtectRoadService;
 import org.jmu.service.RoadService;
 import org.jmu.service.URRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,13 +59,13 @@ public class URRelationController {
         return urRelationService.selectByTime(beginTime, endTime);
     }
 
-    @RequestMapping("/android/work/query/name")
-    public List<URRelation> selectByName(String userName) {
+    @RequestMapping("/android/work/query/name/{userName}")
+    public List<URRelation> selectByName(@PathVariable(value = "userName")String userName) {
         return urRelationService.selectByName(userName);
     }
 
-    @RequestMapping("/android/work/query/area")
-    public List<URRelation> selectByArea(String roadArea) {
+    @RequestMapping("/android/work/query/area/{roadArea}")
+    public List<URRelation> selectByArea(@PathVariable(value = "roadArea")String roadArea) {
         return urRelationService.selectByArea(roadArea);
     }
 }

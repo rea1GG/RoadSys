@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class UploadFileUtil {
     ResponseEntity responseEntity = new ResponseEntity();
+    TimeFormat timeFormat = new TimeFormat();
 
     public ResponseEntity uploadFile(MultipartFile file) throws IOException {
 
-        TimeFormat timeFormat = new TimeFormat();
         if (file.isEmpty()) {
             responseEntity.setCode(300);
             responseEntity.setMsg("文件为空");
@@ -21,7 +21,7 @@ public class UploadFileUtil {
         }
         String originalFileName = file.getOriginalFilename();
         String fileName = timeFormat.dateFormat(System.currentTimeMillis()) + "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
-        String filePath = "E:\\Road\\";
+        String filePath = "/road/";
         File uploadFile = new File(filePath + fileName);
         if (!uploadFile.getParentFile().exists()) {
             uploadFile.getParentFile().mkdirs();
@@ -34,7 +34,7 @@ public class UploadFileUtil {
     }
 
     public ResponseEntity uploadFile(MultipartFile file, int fName) throws IOException {
-        TimeFormat timeFormat = new TimeFormat();
+
         if (file.isEmpty()) {
             responseEntity.setCode(300);
             responseEntity.setMsg("文件为空");

@@ -1,14 +1,10 @@
 package org.jmu.controller;
 
-import org.apache.ibatis.annotations.Param;
-import org.hibernate.validator.cfg.context.CrossParameterConstraintMappingContext;
 import org.jmu.entity.ProtectRoad;
 import org.jmu.entity.ResponseEntity;
 import org.jmu.entity.Road;
-import org.jmu.entity.User;
 import org.jmu.service.ProtectRoadService;
 import org.jmu.service.RoadService;
-import org.jmu.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 

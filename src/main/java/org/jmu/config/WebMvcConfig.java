@@ -18,7 +18,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 当访问/file下的资源时，会到/root/myFile/下去找
         // 例如访问：http://localhost:8080/file/1.png时会去找/root/myFile/1.png
-        registry.addResourceHandler("/file/**").addResourceLocations("file//E:/Road/");
+        registry.addResourceHandler("/images/**").addResourceLocations("file:///road/");
         super.addResourceHandlers(registry);
     }
 }
