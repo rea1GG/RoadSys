@@ -29,7 +29,7 @@ public class UploadFileUtil {
         FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(uploadFile));
         responseEntity.setCode(200);
         responseEntity.setMsg("上传成功");
-        responseEntity.setData(uploadFile);
+        responseEntity.setData("/images/" + fileName);
         return responseEntity;
     }
 
@@ -42,7 +42,7 @@ public class UploadFileUtil {
         }
         String originalFileName = file.getOriginalFilename();
         String fileName = timeFormat.dateFormat(System.currentTimeMillis()) + "-" + fName + "." + originalFileName.substring(originalFileName.lastIndexOf(".") + 1);
-        String filePath = "E:\\Road\\";
+        String filePath = "/road/";
         File uploadFile = new File(filePath + fileName);
         if (!uploadFile.getParentFile().exists()) {
             uploadFile.getParentFile().mkdirs();
@@ -50,7 +50,7 @@ public class UploadFileUtil {
         FileCopyUtils.copy(file.getInputStream(), new FileOutputStream(uploadFile));
         responseEntity.setCode(200);
         responseEntity.setMsg("上传成功");
-        responseEntity.setData(uploadFile);
+        responseEntity.setData("/images/" + fileName);
         return responseEntity;
     }
 }
