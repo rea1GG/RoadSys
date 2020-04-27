@@ -68,4 +68,12 @@ public class URRelationController {
     public List<URRelation> selectByArea(@PathVariable(value = "roadArea")String roadArea) {
         return urRelationService.selectByArea(roadArea);
     }
+    @RequestMapping("/android/work/query/all")
+    public List<URRelation> selectAll(){
+        return urRelationService.selectAll();
+    }
+    @RequestMapping("/android/work/query/id/{urrId}")
+    public URRelation selectById(@PathVariable(value = "urrId") int urrId){
+        return urRelationService.selectByUrrId(urrId);
+    }
 }

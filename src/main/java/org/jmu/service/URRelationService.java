@@ -19,4 +19,8 @@ public interface URRelationService {
     public List<URRelation> selectByName(String userName);
     //通过地区查询符合条件的工作记录
     public List<URRelation> selectByArea(String roadArea);
+    //查询所有工作记录
+    public List<URRelation> selectAll();
+    //根据id查询
+    public URRelation selectByUrrId(int urrId);
 }

@@ -24,7 +24,10 @@ public interface URRelationMapper {
     public List<URRelation> selectByUserName(String userName);
     //按地域查询
     public  List<URRelation> selectByArea(String roadArea);
-
+    //查询所有
+    public List<URRelation> selectAll();
+    //根据id查询
+    public URRelation selectByUrrId(int urrId);
     URRelation selectByPrimaryKey(Integer urrId);
 
     int updateByPrimaryKeySelective(URRelation record);
