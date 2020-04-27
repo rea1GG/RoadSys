@@ -26,6 +26,8 @@ public interface ProtectRoadMapper {
     public List<ProtectRoad> selectSimpleInfo();
     //返回维修的道路的id
     public int selectRoadIdById(int prId);
+    //根据prId查询详细信息
+    public ProtectRoad selectByPrId(int prId);
 
     ProtectRoad selectByPrimaryKey(Integer prId);
 

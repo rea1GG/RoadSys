@@ -22,6 +22,8 @@ public interface ProtectRoadService {
     public List<ProtectRoad> selectSimpleInfo();
     //查询roadID
     public int selectRoadIdById(int prId);
+    //根据主键查询详细信息
+    public ProtectRoad selectByPrId(int prId);
     //test
     public ResponseEntity insertInfo(int userId,String prInfo);
 }

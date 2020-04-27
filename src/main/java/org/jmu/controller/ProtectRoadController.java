@@ -10,6 +10,7 @@ import org.jmu.service.ProtectRoadService;
 import org.jmu.service.RoadService;
 import org.jmu.util.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +60,10 @@ public class ProtectRoadController {
     @RequestMapping("/android/need/query/simple")
     public List<ProtectRoad> selectSimpleInfo(){
         return protectRoadService.selectSimpleInfo();
+    }
+    @RequestMapping("/android/need/query/id/{prId}")
+    public ProtectRoad selectByPrId(@PathVariable(value = "prId") int prId){
+        return protectRoadService.selectByPrId(prId);
     }
     @RequestMapping("/test")
     public ResponseEntity test(int userId,String prInfo){

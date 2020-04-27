@@ -32,6 +32,7 @@ public class UserController {
     public ResponseEntity get(@RequestBody User user){
         ResponseEntity responseEntity = new ResponseEntity();
         String password = userService.getUser(user.getUserName()).getUserPassword();
+        user.setUserId(userService.getUser(user.getUserName()).getUserId());
         if (user.getUserPassword().equals(password)){
             responseEntity.setCode(200);
             responseEntity.setMsg("登录成功");
