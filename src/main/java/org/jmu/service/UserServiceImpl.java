@@ -5,6 +5,8 @@ import org.jmu.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -24,5 +26,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser(String userName) {
         return userMapper.selectUserByName(userName);
+    }
+
+    @Override
+    public int getUserCountBeforeReg(String userName) {
+        return userMapper.getUser(userName);
     }
 }

@@ -4,6 +4,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.jmu.entity.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 @Repository
 public interface UserMapper {
@@ -23,7 +25,8 @@ public interface UserMapper {
     public User selectUserByName(String userName);
     //用户登录
     public int userLogin(User user);
-
+    //注册前提
+    public int getUser(String userName);
     //用户注册
     public int regUserAcc(User user);
 }

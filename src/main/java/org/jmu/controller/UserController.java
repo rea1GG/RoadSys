@@ -6,10 +6,9 @@ import org.jmu.entity.ResponseEntity;
 import org.jmu.entity.User;
 import org.jmu.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -42,6 +41,19 @@ public class UserController {
             responseEntity.setMsg("登录失败");
         }
         return responseEntity;
+    }
+    @RequestMapping("/android/reg/verify")
+    public ResponseEntity verify(@RequestBody  User user){
+        ResponseEntity responseEntity = new ResponseEntity();
+        int tag = userService.getUserCountBeforeReg(user.getUserName());
+        if(tag>0){
+            responseEntity.setCode(300);
+            responseEntity.setMsg("用户名重复");
+        } else{
+            responseEntity.setCode(200);
+            responseEntity.setMsg("用户名可用");
+        }
+        return  responseEntity;
     }
     //安卓注册
     @RequestMapping("/android/register")

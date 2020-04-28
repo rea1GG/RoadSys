@@ -28,6 +28,11 @@
   <select id="userLogin" resultType="java.lang.Integer" parameterType="org.jmu.entity.User">
         select count(*) from `user` where user_name = #{userName} AND user_password = #{userPassword}
   </select>
+<!--  注册检查-->
+  <select id="getUser" resultType="java.lang.Integer" parameterType="java.lang.String">
+    select count(*) from `user` where user_name = #{userName}
+  </select>
+
 
   <select id="selectByPrimaryKey" resultMap="UserResultMap" parameterType="java.lang.Integer" >
     select 
